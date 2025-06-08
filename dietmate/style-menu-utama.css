@@ -1,0 +1,64 @@
+.icon-circle
+{
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+    background-color: #333;
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.dark-area
+{
+    position: relative;
+
+    background-color: #404040;
+    height: 130px;
+}
+
+.icons-row
+{
+    position: absolute;
+
+    width: 100%;
+    bottom: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.light-area
+{
+    font-family: 'Poppins';
+    padding-top: 60px;
+}
+
+.program-bar
+{
+    width: 90%;
+    background-color: #ececec;
+    border-radius: 30px;
+    padding: 10px 16px;
+}
+
+.program-bar-active
+{
+    width: 90%;
+    height: fit-content;
+    background-color: #ececec;
+    border-radius: 30px;
+    padding: 10px 16px;
+}
+
+.program-bar-content
+{
+    border-radius: 30px;
+    background-color: #cecece;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
