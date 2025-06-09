@@ -1,0 +1,71 @@
+.header
+{
+    background-color: #404040;
+    color: #ececec;
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.report-bar
+{
+    width: 90%;
+    background-color: #cecece;
+    border-radius: 30px;
+    height: fit-content;
+    padding: 10px 16px;
+}
+
+.report-bar-content
+{
+    border-radius: 15px;
+    background-color: #ececec;
+    padding-right: 4.5rem;
+    padding-left: 4.5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+
+    color: #8f8e8e;
+}
+
+.progress-circle 
+{
+  width: 180px;
+  height: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-circle svg 
+{
+  position: absolute;
+  transform: rotate(-90deg);
+}
+
+.progress-circle circle 
+{
+  fill: none;
+  stroke-width: 14;
+}
+
+#leave svg {
+  transform: rotate(90deg);
+}
+
+.progress-circle .bg 
+{
+  stroke: #9d9d9d;
+}
+
+.progress-circle .progress 
+{
+  stroke: #535353;
+  stroke-linecap: round;
+}
+
+.statistics .progress-circle h2 
+{
+  color: #4c4c4c;
+}
