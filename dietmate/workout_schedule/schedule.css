@@ -1,0 +1,115 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+}
+
+.phone-frame {
+  width: 360px;
+  border: 14px solid #444;
+  border-radius: 40px;
+  padding: 10px;
+  background: white;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.notch {
+  width: 120px;
+  height: 20px;
+  background: #222;
+  border-radius: 10px;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.screen {
+  height: 700px;
+  overflow-y: auto;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.status-bar {
+  height: 30px;
+  background-color: white;
+  font-size: 13px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+.status-bar .camera {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+}
+
+.top-bar {
+  background-color: #333;
+  height: 50px;
+  color: white;
+  font-size: 16px;
+  position: relative;
+}
+
+.top-bar span.back {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.top-bar .title {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.date-tabs .btn {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.active-tab {
+  background-color: #333;
+  color: white;
+}
+
+.inactive-tab {
+  background-color: #ccc;
+  color: #555;
+}
+
+.day-list .day {
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.day.inactive {
+  background-color: #d9d9d9;
+  color: #333;
+}
+
+.day.active {
+  background-color: #333;
+  color: white;
+}
+
+.workout-item {
+  background-color: #d9d9d9;
+  border-radius: 25px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
