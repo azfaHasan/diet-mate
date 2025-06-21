@@ -5,182 +5,119 @@
   <title>Workout Schedule</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="schedule.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fdf6f0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .week-btn {
+      margin: 0 5px;
+    }
+    .day-btn {
+      width: 100%;
+      text-align: left;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .active-day {
+      background-color: #3a3a3a;
+      color: white;
+    }
+    .schedule-card {
+      border-radius: 15px;
+      background-color: #eee;
+      margin-bottom: 15px;
+      padding: 15px;
+      cursor: pointer;
+    }
+    .check-icon {
+      float: right;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-dark bg-dark justify-content-center">
-  <span class="navbar-brand mb-0 h1 text-center">Workout Schedule</span>
-</nav>
+<div class="container py-4">
+  <h5 class="text-center fw-bold">Workout Schedule</h5>
 
-<!-- Container -->
-<div class="container py-4" id="mainContainer">
-
-  <!-- Week  -->
-  <div class="d-flex justify-content-center mb-3 gap-2" id="weekSelector">
-    <button class="btn week-btn" onclick="loadWeek(1)">1–7 Apr</button>
-    <button class="btn week-btn" onclick="loadWeek(2)">8–14 Apr</button>
-    <button class="btn week-btn" onclick="loadWeek(3)">15–21 Apr</button>
-    <button class="btn week-btn" onclick="loadWeek(4)">22-28 Apr</button>
+  <!-- Week Tabs -->
+  <div class="d-flex justify-content-center mb-3">
+    <button class="btn btn-dark btn-sm week-btn">1–7 Apr</button>
+    <button class="btn btn-outline-dark btn-sm week-btn">8–14 Apr</button>
+    <button class="btn btn-outline-dark btn-sm week-btn">15–21 Apr</button>
   </div>
-
-  <!-- Week Title -->
-  <p class="fw-bold" id="weekTitle">Week 1:</p>
 
   <!-- Day List -->
-  <div id="dayList"></div>
-
-  <!-- Detail hari -->
-  <div id="dayDetail" class="mt-4" style="display: none;">
-<button class="btn btn-link btn-back" onclick="goBack()">&larr; Back</button>
-
-    <h5 class="fw-bold mb-4" id="dayDetailTitle"></h5>
-    <div id="scheduleSteps"></div>
-    <p class="text-danger small mt-2">⚠️ Please don’t do a new movement if the previous is not finished!</p>
+  <div id="dayList">
+    <p class="fw-bold">Week 1:</p>
+    <button class="btn btn-light day-btn" onclick="showDay(1)">Day 1: Upper body</button>
+    <button class="btn btn-dark day-btn" onclick="showDay(2)">Day 2: Intensive cardio</button>
+    <button class="btn btn-light day-btn" onclick="showDay(3)">Day 3: Rest</button>
+    <button class="btn btn-light day-btn" onclick="showDay(4)">Day 4: Lower body</button>
+    <button class="btn btn-light day-btn" onclick="showDay(5)">Day 5: Full body workout</button>
+    <button class="btn btn-light day-btn" onclick="showDay(6)">Day 6: Light cardio & yoga</button>
+    <button class="btn btn-light day-btn" onclick="showDay(7)">Day 7: Rest</button>
   </div>
 
+  <!-- Day Detail Schedule -->
+  <div id="dayDetail" class="mt-4" style="display: none;">
+    <button class="btn btn-link" onclick="goBack()">← Back</button>
+    <h5 class="fw-bold mb-4">Here’s your workout schedule for Day 2:</h5>
+
+    <div class="schedule-card" onclick="checkStep(0)">
+      <span>Warm-up: 10 mins</span><br>
+      <small>Jogging</small>
+      <span class="check-icon" id="check-0">○</span>
+    </div>
+    <div class="schedule-card" onclick="checkStep(1)">
+      <span>Interval Training: 20 mins</span><br>
+      <small>1 min fast running, 1 min walking</small>
+      <span class="check-icon" id="check-1">○</span>
+    </div>
+    <div class="schedule-card" onclick="checkStep(2)">
+      <span>Elliptical Trainer: 15 mins</span>
+      <span class="check-icon" id="check-2">○</span>
+    </div>
+    <div class="schedule-card" onclick="checkStep(3)">
+      <span>Stretching: 5–10 mins</span>
+      <span class="check-icon" id="check-3">○</span>
+    </div>
+    <p class="text-danger small mt-2">⚠️ Please don’t do a new movement if the previous is not finished!</p>
+  </div>
 </div>
+
 <script>
-const weekData = {
-  1: {
-    title: "Week 1:",
-    days: [
-      { title: "Upper body", detail: ["Pemanasan: 10 menit cardio", "Bench Press: 3 set x 10", "Lat Pulldown: 3 set x 10"] },
-      { title: "Intensive cardio", detail: ["Jogging 15 menit", "Push-up 3 set x 15", "Mountain climber 3 set x 1 menit"] },
-      { title: "Rest", detail: ["Hari istirahat"] },
-      { title: "Lower body", detail: ["Pemanasan: 10 menit cardio", "Squat: 4 set x 10", "Deadlift: 3 set x 8"] },
-      { title: "Full body work out", detail: ["Burpees: 1 menit", "Sit-ups: 1 menit", "Jumping Jacks: 1 menit", "Plank: 1 menit"] },
-      { title: "Light cardio & yoga", detail: ["Yoga 40 menit", "Pendinginan 10 menit"] },
-      { title: "Rest", detail: ["Istirahat"] }
-    ]
-  },
-  2: {
-    title: "Week 2:",
-    days: [
-      { title: "Upper body", detail: ["Shoulder Press: 3 set x 10", "Biceps Curl: 3 set x 12", "Triceps Dips: 3 set x 12", "Peregangan: 5–10 menit"] },
-      { title: "Intensive cardio", detail: ["Jogging 15 menit", "Eliptikal Trainer: 15 menit", "Peregangan: 5–10 menit"] },
-      { title: "Rest", detail: ["Hari istirahat"] },
-      { title: "Lower body", detail: ["Deadlift: 3 set x 8", "Lunges: 3 set x 12 per kaki", "Leg Press: 3 set x 12", "Kaki Curl: 3 set x 12", "Peregangan: 5–10 menit"] },
-      { title: "Full body work out", detail: ["Burpees: 1 menit", "Sit-ups: 1 menit", "Jumping Jacks: 1 menit", "Plank: 1 menit", "Ulangi 3–4x", "Peregangan: 5–10 menit"] },
-      { title: "Light cardio & yoga", detail: ["Pilates 30 menit", "Pendinginan 10 menit"] },
-      { title: "Rest", detail: ["Istirahat"] }
-    ]
-  },
-  3: {
-    title: "Week 3:",
-    days: [
-      { title: "Upper body", detail: ["Pemanasan: 10 menit cardio", "Bench Press: 3 set x 10", "Lat Pulldown: 3 set x 10"] },
-      { title: "Intensive cardio", detail: ["Jogging 15 menit", "Push-up 3 set x 15", "Mountain climber 3 set x 1 menit"] },
-      { title: "Rest", detail: ["Hari istirahat"] },
-      { title: "Lower body", detail: ["Pemanasan: 10 menit cardio", "Squat: 4 set x 10", "Deadlift: 3 set x 8"] },
-      { title: "Full body work out", detail: ["Burpees: 1 menit", "Sit-ups: 1 menit", "Jumping Jacks: 1 menit", "Plank: 1 menit"] },
-      { title: "Light cardio & yoga", detail: ["Yoga 40 menit", "Pendinginan 10 menit"] },
-      { title: "Rest", detail: ["Istirahat "] }
-    ]
-  },
-   4: {
-    title: "Week 4:",
-    days: [
-      { title: "Upper body", detail: ["Shoulder Press: 3 set x 10", "Biceps Curl: 3 set x 12", "Triceps Dips: 3 set x 12", "Peregangan: 5–10 menit"] },
-      { title: "Intensive cardio", detail: ["Jogging 15 menit", "Eliptikal Trainer: 15 menit", "Peregangan: 5–10 menit"] },
-      { title: "Rest", detail: ["Hari istirahat"] },
-      { title: "Lower body", detail: ["Deadlift: 3 set x 8", "Lunges: 3 set x 12 per kaki", "Leg Press: 3 set x 12", "Kaki Curl: 3 set x 12", "Peregangan: 5–10 menit"] },
-      { title: "Full body work out", detail: ["Burpees: 1 menit", "Sit-ups: 1 menit", "Jumping Jacks: 1 menit", "Plank: 1 menit", "Ulangi 3–4x", "Peregangan: 5–10 menit"] },
-      { title: "Light cardio & yoga", detail: ["Pilates 30 menit", "Pendinginan 10 menit"] },
-      { title: "Rest", detail: ["Istirahat"] }
-    ]
-  }
-};
+  let currentStep = -1;
 
-let currentWeek = 1;
-
-function loadWeek(week) {
-  currentWeek = week;
-  
-  const weekTitleText = {
-    1: "Week 1",
-    2: "Week 2",
-    3: "Week 3",
-    4: "Week 4"
-  };
-
-  document.getElementById("weekTitle").innerText = weekTitleText[week];
-  document.getElementById("weekTitle").style.display = "block";
-  document.getElementById("dayList").innerHTML = "";
-  document.getElementById("dayList").style.display = "block";
-  document.getElementById("dayDetail").style.display = "none";
-
-  document.querySelectorAll(".week-btn").forEach(btn => btn.classList.remove("active"));
-  document.querySelectorAll(".week-btn")[week - 1].classList.add("active");
-
-  weekData[week].days.forEach((day, index) => {
-    const btn = document.createElement("button");
-    btn.className = "btn-day";
-    btn.innerText = `Day ${index + 1}: ${day.title}`;
-    btn.onclick = () => showDayDetail(index);
-    document.getElementById("dayList").appendChild(btn);
-  });
-}
-
-function showDayDetail(dayIndex) {
-  const day = weekData[currentWeek].days[dayIndex];
-  
-  document.getElementById("dayDetailTitle").innerText = `Here’s your workout schedule for Day ${dayIndex + 1}`;
-
-  const container = document.getElementById("scheduleSteps");
-  container.innerHTML = "";
-
-  day.detail.forEach((step, index) => {
-    const div = document.createElement("div");
-    div.className = "card-step";
-   div.innerHTML = `
-  <div>${step}</div>
-  <input type="checkbox" class="step-checkbox" data-index="${index}" onclick="checkStep(this)">
-`;
-
-    container.appendChild(div);
-  });
-
-  // Tampilkan warning
-  const warning = document.querySelector(".text-danger");
-  if (day.title.toLowerCase().includes("rest")) {
-    warning.style.display = "none";
-  } else {
-    warning.style.display = "block";
-  }
-
-
-  document.getElementById("weekTitle").style.display = "none";
-  document.getElementById("dayList").style.display = "none";
-  document.getElementById("dayDetail").style.display = "block";
-}
-
-function goBack() {
-  document.getElementById("dayDetail").style.display = "none";
-  document.getElementById("dayList").style.display = "block";
-  document.getElementById("weekTitle").style.display = "block";
-}
-
-function checkStep(checkbox) {
-  const index = parseInt(checkbox.dataset.index);
-  const checkboxes = document.querySelectorAll(".step-checkbox");
-
-  // harus urut ceklisnya
-  for (let i = 0; i < index; i++) {
-    if (!checkboxes[i].checked) {
-      checkbox.checked = false; 
-      return;
+  function showDay(day) {
+    if (day === 2) {
+      document.getElementById("dayList").style.display = "none";
+      document.getElementById("dayDetail").style.display = "block";
+    } else {
+      alert("Only Day 2 has a detailed schedule in this demo.");
     }
   }
-}
 
+  function goBack() {
+    document.getElementById("dayDetail").style.display = "none";
+    document.getElementById("dayList").style.display = "block";
+    resetChecklist();
+  }
 
+  function checkStep(index) {
+    if (index === currentStep + 1) {
+      currentStep++;
+      document.getElementById("check-" + index).textContent = "✓";
+    }
+  }
 
-// Load awal
-loadWeek(1);
+  function resetChecklist() {
+    currentStep = -1;
+    for (let i = 0; i < 4; i++) {
+      document.getElementById("check-" + i).textContent = "○";
+    }
+  }
 </script>
-
 
 </body>
 </html>
