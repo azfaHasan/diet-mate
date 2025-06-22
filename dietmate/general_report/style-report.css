@@ -1,7 +1,12 @@
+body
+{
+    background-color: #f4e1c6;
+}
+
 .header
 {
-    background-color: #404040;
-    color: #ececec;
+    background-color: #fdd673;
+    color: #494547;
     font-family: 'Poppins';
     font-weight: bold;
     font-size: 1.5rem;
@@ -10,7 +15,7 @@
 .report-bar
 {
     width: 90%;
-    background-color: #cecece;
+    background-color: #fdd673;
     border-radius: 30px;
     height: fit-content;
     padding: 10px 16px;
@@ -19,7 +24,7 @@
 .report-bar-content
 {
     border-radius: 15px;
-    background-color: #ececec;
+    background-color: #ffffff;
     padding-right: 4.5rem;
     padding-left: 4.5rem;
     margin-top: .5rem;
@@ -56,7 +61,7 @@
 
 .progress-circle .bg 
 {
-  stroke: #9d9d9d;
+  stroke: #ffffff;
 }
 
 .progress-circle .progress 

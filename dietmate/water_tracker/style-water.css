@@ -1,12 +1,13 @@
 body
 {
     font-family: 'Poppins';
+    background-color: #f4e1c6;
 }
 
 .header
 {
-    background-color: #404040;
-    color: #ececec;
+    background-color: #fdd673;
+    color: #494547;
     font-family: 'Poppins';
     font-weight: bold;
     font-size: 1.5rem;
