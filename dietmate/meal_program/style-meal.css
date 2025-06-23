@@ -26,9 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    font-size: 16px;
     font-weight: 600;
-    border-bottom: 1px solid #f0f0f0;
 }
 
 .time {
@@ -74,7 +72,6 @@ body {
     text-align: center;
     padding: 10px;
     background: #f4e1c6;
-    border-bottom: 1px solid #ddd;
 }
 
 .date-text {
@@ -165,7 +162,7 @@ body {
     font-size: 16px;
     font-weight: 600;
     color: #333;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px 0; 
     background: #e8e8e8;
     padding: 8px 12px;
     border-radius: 6px;
@@ -173,7 +170,7 @@ body {
 
 .ingredients-list {
     background: #f5f5f5;
-    padding: 15px;
+    padding: 14px;
     border-radius: 8px;
     color: #666;
     font-size: 14px;
@@ -199,7 +196,7 @@ body {
     background: #fdd673;
     border: none;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     color: #333;
     cursor: pointer;
