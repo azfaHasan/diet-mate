@@ -80,6 +80,11 @@ body {
   font-weight: 600;
 }
 
+.week-label {
+  color: #4c3f2d;
+  font-weight: bold;
+}
+
 .active-tab {
   background-color: #fdc94b;
   color: white;
@@ -115,7 +120,3 @@ body {
   font-weight: 600;
 }
 
-.week-label {
-  color: #4c3f2d;
-  font-weight: bold;
-}
